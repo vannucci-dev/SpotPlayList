@@ -14,14 +14,15 @@ class App extends Component {
           name: "Driver Licenze",
           artist: "Olivia Rodrigo",
           album: "Rodra",
-          id: 3,
+          id: 1,
         },
-        {
-          name: "Adult Mom",
-          artist: "Sober",
-          album: "Epitah",
-          id: 4,
-        },
+        { name: "Adult Mom", artist: "Sober", album: "Epitah", id: 2 },
+      ],
+      playlistName: "New Playlist",
+      playlistTracks: [
+        { name: "Adult Dad", artist: "Sober", album: "Epitah", id: 3 },
+        { name: "Adult Auntie", artist: "Drunk", album: "Epitar", id: 4 },
+        { name: "Adult Uncle", artist: "Asleep", album: "Epitaf", id: 5 },
       ],
     };
   }
@@ -35,7 +36,10 @@ class App extends Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} />
-            <PlayList />
+            <PlayList
+              playlistName={this.state.playlistName}
+              playlistTracks={this.state.playlistTracks}
+            />
           </div>
         </div>
       </div>

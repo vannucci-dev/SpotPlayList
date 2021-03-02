@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./App.css";
 import { SearchBar } from "./SearchBar";
 import { SearchResults } from "./SearchResults";
 import { PlayList } from "./PlayList";

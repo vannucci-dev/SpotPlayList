@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./SearchResults.css";
 import { TrackList } from "./TrackList";
 
 export class SearchResults extends Component {

@@ -1,13 +1,19 @@
 import { Component } from "react";
 import "./App.css";
-import { SearchBar } from "../SearchBar/SearchBar";
-import { SearchResults } from "../SearchResults/SearchResults";
-import { PlayList } from "../PlayList/PlayList";
+import SearchBar from "../SearchBar/SearchBar";
+import SearchResults from "../SearchResults/SearchResults";
+import PlayList from "../PlayList/PlayList";
 import Spotify from "../../util/Spotify";
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchResults: [],
+      playlistName: "New Playlist",
+      playlistTracks: [],
+    };
 
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -15,23 +21,7 @@ class App extends Component {
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
 
-    this.state = {
-      searchResults: [
-        {
-          name: "Driver Licenze",
-          artist: "Olivia Rodrigo",
-          album: "Rodra",
-          id: 1,
-        },
-        { name: "Adult Mom", artist: "Sober", album: "Epitah", id: 2 },
-      ],
-      playlistName: "New Playlist",
-      playlistTracks: [
-        { name: "Adult Dad", artist: "Sober", album: "Epitah", id: 3 },
-        { name: "Adult Auntie", artist: "Drunk", album: "Epitar", id: 4 },
-        { name: "Adult Uncle", artist: "Asleep", album: "Epitaf", id: 5 },
-      ],
-    };
+    Spotify.getAccessToken();
   }
   addTrack(track) {
     if (
@@ -56,18 +46,18 @@ class App extends Component {
     this.setState({ playlistName: name });
   }
   savePlaylist() {
-    const trackURIs = this.state.playlistTracks.map((track) => track.uri);
+    const uris = this.state.playlistTracks.map((track) => track.uri);
+    Spotify.savePlaylist(this.state.playlistName, uris);
   }
   search(search) {
-    Spotify.search(search).then((searchResults) => {
-      this.setState({ searchResults });
+    Spotify.search(search).then((results) => {
+      this.setState({ searchResults: results });
     });
   }
 
   render() {
     return (
       <div>
-        {console.log(this.savePlaylist())}
         <h1>
           Ja<span className="highlight">mmm</span>ing
         </h1>
@@ -77,6 +67,7 @@ class App extends Component {
             <SearchResults
               searchResults={this.state.searchResults}
               onAdd={this.addTrack}
+              isRemoval={false}
             />
             <PlayList
               playlistName={this.state.playlistName}
@@ -84,6 +75,7 @@ class App extends Component {
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
+              isRemoval={true}
             />
           </div>
         </div>

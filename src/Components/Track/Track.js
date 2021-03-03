@@ -32,6 +32,15 @@ class Track extends Component {
   render() {
     return (
       <div className="Track">
+        <iframe
+          src={`https://open.spotify.com/embed/track/${this.props.track.id}`}
+          width="300"
+          height="80"
+          frameborder="0"
+          allowtransparency="true"
+          allow="encrypted-media"
+          title={this.props.track.name}
+        ></iframe>
         <div className="Track-information">
           <h3>{this.props.track.name}</h3>
           <p>

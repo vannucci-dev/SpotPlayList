@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div>
         <h1>
-          Ja<span className="highlight">mmm</span>ing
+          Spot<span className="highlight">play</span>list
         </h1>
         <div className="App">
           <SearchBar onSearch={this.search} />

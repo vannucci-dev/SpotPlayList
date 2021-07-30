@@ -1,7 +1,6 @@
-# Jamming
+# SpotPlayList
 
 This project was created to showcase the use of React components, API calls and state management.
-I've followed the guidelines and used the styling provided by CodeCademy to realise this web-app.
 
 ## Functionalities
 
@@ -22,9 +21,8 @@ Include preview samples for each track.
 
 ### BACKGROUND
 
-At the current state, Jamming presents a list of tracks in response to an API request to Spotify.
+At the current state, SpotPlayList presents a list of tracks in response to an API request to Spotify.
 The tracklist shows an array of track components each of which includes, the track name, the artist, the album, and the button to add the track to the playlist.
-If the user is given the chance to listen to a preview of the songs, it would greatly improve their experience, especially if the user is not sure the song listed is the one they wanted and would have to open Spotify client to confirm.
 
 ### TECHNICAL DESIGN
 
@@ -36,4 +34,4 @@ The addition of the widget will require a minor adjustment in the CSS of the Tra
 
 This solution relies on an iFrame, a quite obsolete feature of HTML5 that, unfortunately, doesn’t have an adequate substitute at this day. The design of the embed is customisable up to a certain point and if a different style is required, a new custom iFrame will need to be created.
 
-![screenshot](./screenshot.png)
+![screenshot](./SpotPlayList.png)

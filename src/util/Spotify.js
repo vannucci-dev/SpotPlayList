@@ -1,7 +1,7 @@
 let accessToken;
 let expiresIn;
 const clientID = "6876d4de36d542d78309811e5876a360";
-const redirectURI = "http://localhost:3000/";
+const redirectURI = "/";
 
 const Spotify = {
   getAccessToken() {
